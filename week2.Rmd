@@ -1,0 +1,38 @@
+---
+title: "Developing R Products Assignment 1(week2)"
+author: "Anshuman Swaroop"
+date: "31 October 2024"
+output: html_document
+---
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown, see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button, a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
+
+```{r, message=FALSE}
+# Load necessary libraries
+library(knitr)
+library(leaflet)
+library(dplyr)
+# Create a leaflet map with multiple markers
+m <- leaflet() %>%
+  addTiles() %>%  # Add default OpenStreetMap map tiles
+  addMarkers(lat=15.3350, lng=76.4600, popup="Hampi, Karnataka") %>%
+  addMarkers(lat=14.5479, lng=74.3188, popup="Gokarna, Karnataka") %>%
+  addMarkers(lat=15.2361, lng=74.6173, popup="Dandeli, Karnataka") %>%
+  addMarkers(lat=14.0940, lng=74.4899, popup="Murdeshwar, Karnataka")
+
+# Display the map
+m
+# Generate random latitude and longitude data for clustering
+df <- data.frame(
+  lat = runif(500, min=14.09, max=15.33),
+  lng = runif(500, min=74.31, max=76.46)
+)
+
+# Create a leaflet map with clusters
+leaflet(data = df) %>%
+  addTiles() %>%
+  addMarkers(clusterOptions = markerClusterOptions())
