@@ -1,6 +1,6 @@
 ---
 title: "Car Data"
-author: "ANSHUMAN Swaroop"
+author: "ANSHUMAN SWAROOP"
 date: "October 31, 2024"
 output: ioslides_presentation
 ---
